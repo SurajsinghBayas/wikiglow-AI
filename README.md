@@ -35,6 +35,7 @@ NEXT_PUBLIC_ADSENSE_SLOT_SUMMARY_EMPTY=1234567893
 ```
 
 Notes:
+
 - Ads are rendered only when a section is empty; normal content is never replaced.
 - In development (`next dev`) the ads run in test mode automatically via `data-adtest="on"`.
 - The AdSense script is loaded only when `NEXT_PUBLIC_ADSENSE_CLIENT` is set.
