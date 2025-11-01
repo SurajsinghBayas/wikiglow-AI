@@ -1,0 +1,238 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root{
+  --bg: #ffffff;
+  --text: #0b0f14;
+  --muted: #5b6776;
+  --border: #0b0f14;
+  --card: #ffffff;
+  --chip-bg: #f1f5f9;
+  --chip-text: #0b0f14;
+  --link: #0b69ff;
+  --link-hover: #0046b8;
+  --accent: #ffd24d; /* warm amber accent */
+  --nav-h: 56px;
+}
+
+html.dark{
+  --bg: #0d1117; /* github-dark */
+  --text: #e6edf3;
+  --muted: #9da7b3;
+  --border: #30363d;
+  --card: #0e1116;
+  --chip-bg: #e5e7eb; /* keep chips light for contrast */
+  --chip-text: #0b0f14;
+  --link: #79c0ff;
+  --link-hover: #a5d6ff;
+  --accent: #ffd24d;
+}
+
+/* Sepia theme */
+html.sepia{
+  --bg: #f7f2e7; /* warm paper */
+  --text: #2b241a;
+  --muted: #6d5f4d;
+  --border: #2b241a;
+  --card: #fbf7ef;
+  --chip-bg: #efe8db;
+  --chip-text: #2b241a;
+  --link: #3b6ea8; /* muted blue works on sepia */
+  --link-hover: #2a5d96;
+  --accent: #e3b341; /* warmer amber */
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing:antialiased;
+  padding-top: var(--nav-h);
+}
+
+html{ scroll-behavior: smooth; }
+
+.notes-card{
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  box-shadow: 2px 2px 0 var(--border);
+  background: var(--card);
+}
+
+/* Dark mode surface & stroke inversion */
+html.dark .bg-white{ background-color: var(--card) !important; }
+html.dark .notes-card{ background-color: var(--card); border-color: var(--text); box-shadow: 2px 2px 0 var(--text); }
+html.dark .border{ border-color: var(--border); }
+html.dark .prose a{ color: var(--link); }
+html.dark .prose a:hover{ color: var(--link-hover); }
+
+.reader-content { font-size: var(--reader-font-size, 17px); line-height: 1.7; }
+.reader-content img{max-width:100%;height:auto}
+
+.prose{ line-height:1.65; }
+.article-body{ font-size: var(--reader-font-size, 17px); font-family: var(--reader-font, Poppins), ui-sans-serif, system-ui, serif; }
+/* Prevent long words from overflowing in narrow containers */
+.article-body{ overflow-wrap:anywhere; word-break:break-word; }
+
+/* Links */
+.prose a{ color: var(--link); text-underline-offset: 3px; }
+.prose a:hover{ color: var(--link-hover); }
+
+/* Image frames with NotesBuddy-like look */
+.article-body img{
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  box-shadow: 2px 2px 0 #000;
+}
+html.dark .article-body img{ border-color:#e6edf3; box-shadow:2px 2px 0 #e6edf3; }
+.article-body figure{ margin: 1.25rem 0; }
+.article-body figcaption{ color: #6b7280; font-size: 0.85rem; margin-top: 0.25rem; }
+
+/* Image depth gutters similar to table hints */
+.prose .wiki-figure{ position:relative; }
+.prose .wiki-figure:before,
+.prose .wiki-figure:after{
+  content:""; position:absolute; top:0; bottom:0; width:16px; pointer-events:none;
+}
+.prose .wiki-figure:before{ left:0; background: linear-gradient(to right, rgba(11,15,20,0.06), rgba(11,15,20,0)); }
+.prose .wiki-figure:after{ right:0; background: linear-gradient(to left, rgba(11,15,20,0.06), rgba(11,15,20,0)); }
+html.dark .prose .wiki-figure:before{ background: linear-gradient(to right, rgba(230,237,243,0.06), rgba(230,237,243,0)); }
+html.dark .prose .wiki-figure:after{ background: linear-gradient(to left, rgba(230,237,243,0.06), rgba(230,237,243,0)); }
+html.sepia .prose .wiki-figure:before{ background: linear-gradient(to right, rgba(43,36,26,0.06), rgba(43,36,26,0)); }
+html.sepia .prose .wiki-figure:after{ background: linear-gradient(to left, rgba(43,36,26,0.06), rgba(43,36,26,0)); }
+
+/* Cool Tables */
+.prose table.wikitable{
+  width:100%; border:1px solid #000; border-radius: 0.75rem; overflow:hidden;
+  border-collapse: separate; border-spacing: 0; font-size:0.95rem;
+}
+.prose table.wikitable thead th{ background:#f3f4f6; border-bottom:2px solid #000; font-weight:700; }
+.prose table.wikitable th, .prose table.wikitable td{ border-right:1px solid #000; padding:0.65rem 0.75rem; vertical-align: top; }
+.prose table.wikitable tr:nth-child(even) td{ background:#fafafa; }
+.prose table.wikitable tr:last-child td{ border-bottom:none; }
+.prose table.wikitable th:last-child, .prose table.wikitable td:last-child{ border-right:none; }
+html.dark .prose table.wikitable{ border-color:#e6edf3; }
+html.dark .prose table.wikitable thead th{ background:#131a22; border-bottom-color:#e6edf3; }
+html.dark .prose table.wikitable th, html.dark .prose table.wikitable td{ border-right-color:#e6edf3; }
+html.dark .prose table.wikitable tr:nth-child(even) td{ background:#121821; }
+
+/* Headings spacing and anchor offset */
+.prose :is(h1,h2,h3){ scroll-margin-top: 120px; margin-top: 2.4rem; }
+.prose h1{ font-weight: 800; }
+.prose p{ margin-top: 1.1rem; }
+
+/* Figures */
+.prose .wiki-figure{ margin:1rem 0; }
+.prose .wiki-figure img{ border-radius:0.5rem; }
+
+/* Make wide tables horizontally scrollable without breaking layout */
+.article-body table{ display: table; }
+.article-body .table-scroll{ position:relative; display:block; max-width:100%; overflow-x:auto; overflow-y:hidden; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; padding-bottom: 6px; margin: 0.5rem 0; }
+.article-body .table-scroll > table{ width: max-content; min-width: 100%; }
+
+/* Horizontal scroll hint gradients */
+/* Remove scroll hint shadow gradients on tables */
+.article-body .table-scroll:before,
+.article-body .table-scroll:after{ display:none; content:none; }
+
+/* Infobox/personal-info: keep within container and readable */
+.article-body table.infobox,
+.article-body table.vcard,
+.article-body table.person-info{
+  display:block;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+}
+.article-body table.infobox,
+.article-body table.vcard,
+.article-body table.person-info{
+  width:100%;
+  min-width:0;
+  table-layout: fixed;
+}
+
+/* Infobox labels readable and wrapping */
+.article-body table.infobox th,
+.article-body table.personal-info th{
+  /* Plain text label: no box */
+  background: transparent !important;
+  color: var(--text);
+  border: none;
+  border-radius: 0;
+  padding: 8px 10px 6px 0;
+  /* keep default table-cell display for proper table layout */
+  white-space: normal;
+  overflow-wrap: normal;   /* break at spaces only */
+  word-break: keep-all;    /* do not break within Latin words */
+  hyphens: none;           /* avoid soft hyphenation */
+  line-height: 1.35;
+  font-weight: 700;
+}
+.article-body table.infobox td,
+.article-body table.personal-info td{
+  vertical-align: top;
+  padding: 8px 10px;
+  word-break: normal;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+html.dark .article-body table.infobox th,
+html.dark .article-body table.personal-info th{
+  background: transparent !important;
+  color: var(--text);
+  border: none;
+}
+/* Uniform row separation */
+.article-body table.infobox tr,
+.article-body table.personal-info tr{
+  border-bottom: 1px solid var(--border);
+}
+.article-body table.infobox tr:last-child,
+.article-body table.personal-info tr:last-child{
+  border-bottom: none;
+}
+/* Prefer consistent column widths for labels */
+.article-body table.infobox th,
+.article-body table.personal-info th{ width: 42%; }
+@media (min-width: 640px){
+  .article-body table.infobox th,
+  .article-body table.personal-info th{ width: 36%; }
+}
+
+/* Collapsible infobox card wrapper (mobile friendly) */
+.article-body details.infobox-card{ margin: 0.75rem 0; padding: 0.5rem; overflow-x:auto; }
+.article-body details.infobox-card > summary{ cursor: pointer; padding: 0.25rem 0.25rem 0.5rem; list-style: none; font-weight: 700; }
+.article-body details.infobox-card > summary::-webkit-details-marker{ display:none; }
+.article-body details.infobox-card[open] > summary{ margin-bottom: 0.25rem; }
+
+/* On large screens, keep infobox always open and hide the summary header (since Sidebar/Controls present) */
+@media (min-width: 1024px){
+  .article-body details.infobox-card > summary{ display:none; }
+  /* Make infobox behave like a sidebar card instead of full-width */
+  .article-body details.infobox-card{ float:right; max-width: 360px; margin: 0.25rem 0 1rem 1rem; }
+  .article-body details.infobox-card table.infobox,
+  .article-body details.infobox-card table.vcard,
+  .article-body details.infobox-card table.person-info{
+    width:auto; min-width:0; table-layout:auto;
+  }
+}
+
+/* Framed images */
+.article-body img{ border:1px solid #000; box-shadow: 2px 2px 0 #000; border-radius: 0.5rem; }
+
+/* No duplicate overrides below this line */
+
+html{ scroll-behavior: smooth; }
+
+/* Chips */
+.chip{ display:inline-flex; align-items:center; gap:6px; padding:2px 8px; border:1px solid var(--border); border-radius:999px; background: var(--chip-bg); color: var(--chip-text); box-shadow: 2px 2px 0 var(--border); }
+/* Make sure all tables wrap content gracefully */
+.article-body table, .article-body th, .article-body td{
+  word-break: normal;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
