@@ -11,7 +11,6 @@ export const metadata = {
 }
 
 export default function RootLayout({ children }){
-  const adsClient = process.env.NEXT_PUBLIC_ADSENSE_CLIENT || 'ca-pub-8037321916392892'
   return (
     <html lang="en">
       <head>
@@ -28,13 +27,11 @@ export default function RootLayout({ children }){
           family=Merriweather:wght@400;700&
           family=Lora:wght@400;700&display=swap" rel="stylesheet" />
         {/* Google AdSense (auto ads) */}
-        {adsClient && (
-          <script
-            async
-            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsClient}`}
-            crossOrigin="anonymous"
-          />
-        )}
+        <script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8037321916392892"
+          crossOrigin="anonymous"
+        />
       </head>
       <body>
         <ClientBoot />

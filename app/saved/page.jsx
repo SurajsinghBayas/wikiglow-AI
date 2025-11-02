@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { toast } from '@/lib/toast'
-import AdSenseSlot from '@/components/AdSenseSlot'
 
 export default function SavedPage(){
   const [items,setItems] = useState([])
@@ -48,17 +47,7 @@ export default function SavedPage(){
       </div>
 
       {items.length===0 ? (
-        <div>
-          <div className="text-[var(--muted)]">No saved pages yet. Open an article and click Save.</div>
-          {/* Show an ad only when the section is otherwise empty */}
-          <div className="mt-4">
-            <AdSenseSlot
-              show={true}
-              slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_SAVED_EMPTY || process.env.NEXT_PUBLIC_ADSENSE_SLOT_FALLBACK}
-              style={{ minHeight: 120 }}
-            />
-          </div>
-        </div>
+        <div className="text-[var(--muted)]">No saved pages yet. Open an article and click Save.</div>
       ) : (
         <div className="overflow-auto notes-card bg-white dark:bg-[var(--bg)] p-0">
           <table className="min-w-full text-sm">

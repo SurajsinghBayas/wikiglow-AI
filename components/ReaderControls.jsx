@@ -3,7 +3,6 @@ import {useState,useEffect} from 'react'
 import { Button } from '@/components/ui/button'
 import { loadSettings, saveSettings, applySettings } from '@/lib/settings'
 import { toast } from '@/lib/toast'
-import AdSenseSlot from '@/components/AdSenseSlot'
 
 export default function ReaderControls({ targetSelector = 'body' }){
   const [font,setFont]=useState('Poppins')
@@ -109,17 +108,7 @@ export default function ReaderControls({ targetSelector = 'body' }){
             )}
           </div>
           {(!saved || saved.length===0) && (
-            <div>
-              <div className="text-xs text-[var(--muted)]">No saved pages</div>
-              {/* Ad fits the 256px side panel; only when empty */}
-              <div className="mt-2">
-                <AdSenseSlot
-                  show={true}
-                  slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_SIDEPANEL_EMPTY || process.env.NEXT_PUBLIC_ADSENSE_SLOT_FALLBACK}
-                  style={{ width: '100%', height: 250 }}
-                />
-              </div>
-            </div>
+            <div className="text-xs text-[var(--muted)]">No saved pages</div>
           )}
           {saved && saved.length>0 && (
             <div className="max-h-48 overflow-auto pr-1 space-y-1">

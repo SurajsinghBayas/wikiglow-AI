@@ -8,7 +8,6 @@ import ReaderControls from '@/components/ReaderControls'
 import ArticleHeader from '@/components/ArticleHeader'
 import Footer from '@/components/Footer'
 import MobileDock from '@/components/MobileDock'
-import AdSenseSlot from '@/components/AdSenseSlot'
 
 export default function ViewPage(){
   const params = useParams()
@@ -139,21 +138,7 @@ export default function ViewPage(){
                 ? <div dangerouslySetInnerHTML={{ __html: summaryHtml }} />
                 : summary
                   ? <p>{summary}</p>
-                  : (
-                    <div>
-                      <p className="text-[var(--muted)]">{summarizing ? 'Generating summary…' : 'No summary available.'}</p>
-                      {/* Ad only when there's no summary content */}
-                      {!summarizing && (
-                        <div className="mt-4">
-                          <AdSenseSlot
-                            show={true}
-                            slot={process.env.NEXT_PUBLIC_ADSENSE_SLOT_SUMMARY_EMPTY || process.env.NEXT_PUBLIC_ADSENSE_SLOT_FALLBACK}
-                            style={{ minHeight: 120 }}
-                          />
-                        </div>
-                      )}
-                    </div>
-                  )
+                  : <p className="text-[var(--muted)]">{summarizing ? 'Generating summary…' : 'No summary available.'}</p>
               }
             </div>
           )}

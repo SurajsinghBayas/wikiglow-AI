@@ -133,7 +133,13 @@ export default function Navbar(){
             placeholder="Search Wikipedia…"
           />
           {showDrop && (
-            <div className="absolute left-0 right-0 z-50 mt-2 max-h-80 overflow-auto notes-card bg-white dark:bg-[var(--bg)] border animate-in fade-in-0 zoom-in-95 duration-150">
+            <div
+              className="
+                fixed inset-x-3 top-16 z-[60] max-h-[70vh] overflow-auto
+                notes-card bg-white dark:bg-[var(--bg)] border animate-in fade-in-0 zoom-in-95 duration-150
+                sm:absolute sm:inset-auto sm:left-0 sm:right-0 sm:top-auto sm:mt-2 sm:max-h-80
+              "
+            >
               {loading && <div className="px-3 py-2 text-sm text-gray-500">Searching…</div>}
               {!loading && results.length===0 && <div className="px-3 py-2 text-sm text-gray-500">No results</div>}
               {!loading && results.map((r,idx)=>
