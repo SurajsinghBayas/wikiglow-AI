@@ -1,4 +1,3 @@
-export async function GET(){
-  // ads.txt route intentionally simplified; no AdSense-specific content.
-  return new Response('', { headers: { 'content-type': 'text/plain; charset=utf-8', 'cache-control': 'public, max-age=60' } })
-}
+// Deprecated: do not export any handlers here.
+// The static file at /public/ads.txt will be served directly by Next.js.
+// Leaving this file without exports avoids any route conflicts.

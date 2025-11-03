@@ -2,6 +2,7 @@ import './globals.css'
 import { Inter } from 'next/font/google'
 import Toaster from '@/components/Toaster'
 import ClientBoot from '@/components/ClientBoot'
+import AdSenseBoot from '@/components/AdSenseBoot'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -26,14 +27,10 @@ export default function RootLayout({ children }){
           family=Source+Serif+4:wght@400;700&
           family=Merriweather:wght@400;700&
           family=Lora:wght@400;700&display=swap" rel="stylesheet" />
-        {/* Google AdSense (auto ads) */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8037321916392892"
-          crossOrigin="anonymous"
-        />
+        {/* AdSense script is injected only on content pages by AdSenseBoot */}
       </head>
       <body>
+        <AdSenseBoot />
         <ClientBoot />
         <Toaster />
         {children}

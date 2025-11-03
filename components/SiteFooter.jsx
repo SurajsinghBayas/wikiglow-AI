@@ -30,8 +30,8 @@ export default function SiteFooter(){
         <div>
           <div className="font-semibold mb-2">Legal</div>
           <ul className="space-y-1 text-[var(--muted)]">
-            <li><a href="#" className="hover:underline">Privacy</a></li>
-            <li><a href="#" className="hover:underline">Terms</a></li>
+            <li><a href="/privacy" className="hover:underline">Privacy</a></li>
+            <li><a href="/terms" className="hover:underline">Terms</a></li>
             <li className="pt-1">Not affiliated with Wikipedia or the Wikimedia Foundation.</li>
           </ul>
         </div>
