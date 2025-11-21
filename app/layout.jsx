@@ -17,16 +17,10 @@ export default function RootLayout({ children }){
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link href="https://fonts.googleapis.com/css2?
-          family=Inter:wght@400;600;800&
-          family=Lexend:wght@400;600;800&
-          family=Poppins:wght@400;600;800&
-          family=Roboto:wght@400;500;700&
-          family=Open+Sans:wght@400;600;700&
-          family=IBM+Plex+Sans:wght@400;600;700&
-          family=Source+Serif+4:wght@400;700&
-          family=Merriweather:wght@400;700&
-          family=Lora:wght@400;700&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Lexend:wght@400;600;800&family=Poppins:wght@400;600;800&family=Roboto:wght@400;500;700&family=Open+Sans:wght@400;600;700&family=IBM+Plex+Sans:wght@400;600;700&family=Source+Serif+4:wght@400;700&family=Merriweather:wght@400;700&family=Lora:wght@400;700&display=swap"
+          rel="stylesheet"
+        />
         {/* AdSense script is injected only on content pages by AdSenseBoot */}
       </head>
       <body>
